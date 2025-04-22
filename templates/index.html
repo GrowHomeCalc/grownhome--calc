@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GrowHome Calc</title>
+</head>
+<body>
+<h1><img src="{{ url_for('static', filename='GrowHome Calc Logo Design.png') }}" height="80"> GrowHome Calc</h1>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/design">Design</a> |
+  <a href="/setup">Setup</a> |
+  <a href="/about">About</a> |
+  <a href="/feedback">Feedback</a> |
+  <a href="/compare-breakeven">Compare Breakeven</a>
+</nav>
+<hr>
+
+<form method="POST">
+<label>Family Size:</label>
+<input type="number" name="family" value="{{ family }}"><br><br>
+
+<label>Trays:</label>
+<input type="number" name="trays" value="{{ trays }}"><br><br>
+
+<label>Crop Type:</label>
+<select name="crop">
+  {% for c in ["Collard Greens", "Romaine Lettuce", "Butterhead Lettuce", "Kale", "Spinach", "Mustard Greens"] %}
+  <option value="{{ c }}" {% if crop == c %}selected{% endif %}>{{ c }}</option>
+  {% endfor %}
+</select><br><br>
+
+<label>Season:</label>
+<select name="season">
+  {% for s in ["Spring", "Summer", "Fall", "Winter"] %}
+  <option value="{{ s }}" {% if season == s %}selected{% endif %}>{{ s }}</option>
+  {% endfor %}
+</select><br><br>
+
+<label>Sunlight Direction:</label>
+<select name="sunlight">
+  {% for d in ["N", "NE", "E", "SE", "S", "SW", "W", "NW"] %}
+  <option value="{{ d }}" {% if sunlight == d %}selected{% endif %}>{{ d }}</option>
+  {% endfor %}
+</select><br><br>
+
+<label>Lighting Mode:</label>
+<select name="power_mode">
+  <option value="realistic" {% if power_mode == 'realistic' %}selected{% endif %}>Realistic Estimate</option>
+  <option value="max" {% if power_mode == 'max' %}selected{% endif %}>Max Power Mode</option>
+</select><br><br>
+
+<button type="submit">Calculate</button>
+</form>
+
+{% if total_yield %}
+<hr>
+<h2>Results</h2>
+<ul>
+<li><b>Total Yield:</b> {{ total_yield }} lbs/month</li>
+<li><b>Monthly Electricity Cost:</b> ${{ electricity }}</li>
+<li><b>Monthly Nutrient Cost:</b> ${{ nutrients }}</li>
+<li><b>Cost per Pound:</b> ${{ cost_per_lb }}</li>
+<li><b>Estimated Breakeven (at ${{ assumed_cost }} build cost):</b> {{ breakeven }} months</li>
+</ul>
+
+<h3>Store Price Comparison:</h3>
+<ul>
+  {% for store, price in store_prices.items() %}
+    <li>{{ store }}: ${{ price }}/lb — Total: ${{ "%.2f"|format(price * total_yield) }}</li>
+  {% endfor %}
+</ul>
+
+<p><a href="{{ url_for('pdf_export') }}">📄 Download PDF Summary</a></p>
+{% endif %}
+
+</body>
+</html>

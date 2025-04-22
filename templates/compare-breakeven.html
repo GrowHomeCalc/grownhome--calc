@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Break-Even Timelines</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Compare Break-Even Timelines by Crop</h1>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/design">Design</a> |
+  <a href="/setup">Setup</a> |
+  <a href="/about">About</a> |
+  <a href="/feedback">Feedback</a> |
+  <a href="/compare-breakeven">Compare Breakeven</a>
+</nav>
+<hr>
+
+<canvas id="breakevenChart" width="700" height="400"></canvas>
+
+<script>
+    const ctx = document.getElementById('breakevenChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ labels | safe }},
+            datasets: [{
+                label: 'Breakeven Timeline (months)',
+                data: {{ data | safe }},
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Months to Breakeven'
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
