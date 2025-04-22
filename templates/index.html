@@ -1,0 +1,24 @@
+
+<html><body>
+<h1><img src="{{ url_for('static', filename='GrowHome Calc Logo Design.png') }}" height="80"> GrowHome Calc</h1>
+<form method="POST">
+Trays: <input type="number" name="trays" value="{{ trays }}"><br>
+Family Size: <input type="number" name="family" value="{{ family }}"><br>
+Crop: <select name="crop">
+  {% for c in ["Collard Greens", "Romaine Lettuce", "Butterhead Lettuce", "Kale", "Spinach", "Mustard Greens"] %}
+  <option value="{{ c }}" {% if crop == c %}selected{% endif %}>{{ c }}</option>
+  {% endfor %}
+</select><br>
+<button type="submit">Calculate</button>
+</form>
+{% if total_yield %}
+<h2>Results</h2>
+<ul>
+<li>Total Yield: {{ total_yield }} lbs</li>
+<li>Monthly Electricity Cost: ${{ electricity }}</li>
+<li>Monthly Nutrient Cost: ${{ nutrients }}</li>
+<li>Cost per Pound: ${{ cost_per_lb }}</li>
+<li>Estimated Breakeven (at ${{ assumed_cost }} build cost): {{ breakeven }} months</li>
+</ul>
+{% endif %}
+</body></html>
