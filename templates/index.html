@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GrowHome Calc</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        nav a { margin: 0 10px; text-decoration: none; }
+        .tooltip {
+            border-bottom: 1px dotted black;
+            cursor: help;
+        }
+    </style>
+</head>
+<body>
+    <img src="static/logo.png" alt="GrowHome Calc Logo" style="height: 60px;">
+    <h1>GrowHome Calc</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/design">Design</a> |
+        <a href="/setup">Setup</a> |
+        <a href="/about">About</a> |
+        <a href="/feedback">Feedback</a> |
+        <a href="/compare-breakeven">Compare Breakeven</a> |
+        <a href="/calculations">Calculations</a>
+    </nav>
+    <hr>
+
+    <form method="post">
+        <label>Family Size:
+            <input type="number" name="family_size" value="4" min="1">
+        </label><br><br>
+
+        <label>Trays:
+            <input type="number" name="trays" value="3" min="1">
+        </label><br><br>
+
+        <label>Crop Type:
+            <select name="crop_type">
+                <option>Collard Greens</option>
+                <option>Romaine Lettuce</option>
+                <option>Butterhead Lettuce</option>
+            </select>
+        </label><br><br>
+
+        <label>Season:
+            <select name="season">
+                <option>Summer</option>
+                <option>Winter</option>
+                <option>Spring</option>
+                <option>Fall</option>
+            </select>
+        </label><br><br>
+
+        <label>Sunlight Direction:
+            <select name="sunlight_direction">
+                <option>S</option>
+                <option>SE</option>
+                <option>SW</option>
+                <option>E</option>
+                <option>W</option>
+                <option>NE</option>
+                <option>NW</option>
+                <option>N</option>
+            </select>
+        </label><br><br>
+
+        <label>Lighting Mode: <span class="tooltip" title="Realistic Estimate balances cost and efficiency. Max Power uses full LED capacity.">❓</span>
+            <select name="power_mode">
+                <option>Realistic Estimate</option>
+                <option>Max Power</option>
+            </select>
+        </label><br><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+
+    <h2>Results</h2>
+    <ul>
+        <li><strong>Total Yield:</strong> 8.82 lbs/month</li>
+        <li><strong>Monthly Electricity Cost:</strong> $4.62</li>
+        <li><strong>Monthly Nutrient Cost:</strong> $10.00</li>
+        <li><strong>Cost per Pound:</strong> $1.66</li>
+        <li><strong>Estimated Breakeven (at $250 build cost):</strong> 35 months</li>
+    </ul>
+
+    <h3>Store Price Comparison:</h3>
+    <ul>
+        <li>Safeway: $2.49/lb — Total: $21.96</li>
+        <li>Whole Foods: $3.25/lb — Total: $28.66</li>
+        <li>Farmers Market: $2.25/lb — Total: $19.84</li>
+        <li>GrowHome: $1.66/lb — Total: $14.64</li>
+    </ul>
+
+    <p><a href="/report">📄 Download PDF Summary</a></p>
+
+    <p><em>Recommended Trays for Family Size of 4: 3 trays</em></p>
+</body>
+</html>
