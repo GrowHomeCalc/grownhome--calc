@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>GrowHome Calc - Calculation Details</title></head>
+<body>
+<h1>Calculation Details</h1>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/design">Design</a> |
+  <a href="/setup">Setup</a> |
+  <a href="/about">About</a> |
+  <a href="/feedback">Feedback</a> |
+  <a href="/compare-breakeven">Compare Breakeven</a> |
+  <a href="/calculations">Calculations</a>
+</nav>
+<hr>
+
+<h2>Formulas Used</h2>
+<ul>
+  <li><b>Monthly Yield (lbs):</b><br>
+      <code>Monthly Yield = trays × 2.8 sqft × crop_yield_rate (lbs/sqft/month)</code></li>
+
+  <li><b>Electricity Use (kWh/month):</b><br>
+      <code>LED kWh = (base_wattage × trays × season_multiplier × sunlight_multiplier) ÷ 1000 × 16 hrs/day × 30 days</code><br>
+      <code>Total kWh = LED kWh + 7.5 kWh (air pump)</code></li>
+
+  <li><b>Electricity Cost ($):</b><br>
+      <code>Electricity Cost = Total kWh × $0.161 (MD utility rate)</code></li>
+
+  <li><b>Cost Per Pound:</b><br>
+      <code>Cost/lb = (Electricity + Nutrients) ÷ Monthly Yield</code></li>
+
+  <li><b>Monthly Savings:</b><br>
+      <code>Monthly Savings = (Monthly Yield × Market Price/lb) − (Electricity + Nutrients)</code></li>
+
+  <li><b>Breakeven Timeline (months):</b><br>
+      <code>Breakeven = System Cost ÷ Monthly Savings</code> <br>
+      Only shown if Monthly Savings > 0</li>
+
+  <li><b>Build Cost:</b><br>
+      <code>Total = Lighting + Pump + Structural + Nutrients + Sensors (optional)</code></li>
+</ul>
+
+<p>Calculations are based on real-world hydroponic benchmarks and Maryland electricity prices as of April 2025.</p>
+
+</body>
+</html>
