@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Your System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #006400;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 30px;
+            max-width: 400px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 16px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #246b45;
+        }
+    </style>
+</head>
+<body>
+    <h1>Design Your Hydroponic System</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/breakeven">Breakeven</a>
+        <a href="/feedback">Feedback</a>
+        <a href="/calculations">Calculations</a>
+        <a href="/about">About</a>
+    </nav>
+
+    <section>
+        <form method="POST" action="/calculations">
+            <label for="trays">Number of Grow Trays:</label>
+            <input type="number" name="trays" id="trays" min="1" required>
+
+            <label for="light_type">Choose Lighting:</label>
+            <select name="light_type" id="light_type">
+                <option value="low">Low-End LED</option>
+                <option value="mid">Mid-Range LED</option>
+                <option value="high">High-End LED</option>
+            </select>
+
+            <label for="pump_type">Choose Pump:</label>
+            <select name="pump_type" id="pump_type">
+                <option value="low">Low-End Pump</option>
+                <option value="mid">Mid-Range Pump</option>
+                <option value="high">High-End Pump</option>
+            </select>
+
+            <label for="sensors">Add Sensors?</label>
+            <select name="sensors" id="sensors">
+                <option value="no">No Sensors</option>
+                <option value="yes">Yes, include sensors</option>
+            </select>
+
+            <button type="submit">Estimate Cost</button>
+        </form>
+    </section>
+</body>
+</html>
