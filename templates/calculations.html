@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Cost Estimate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #006400;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            max-width: 700px;
+        }
+        h2, h3 {
+            color: #2e8b57;
+        }
+        ul {
+            padding-left: 18px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 16px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #246b45;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estimated System Performance</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/design">Design</a>
+        <a href="/breakeven">Breakeven</a>
+        <a href="/feedback">Feedback</a>
+        <a href="/about">About</a>
+    </nav>
+
+    <section>
+        <h2>System Summary</h2>
+        <p><strong>Trays:</strong> {{ trays }}</p>
+	<p><strong>Recommended Trays for Your Family:</strong> {{ recommended_trays }</p>
+        <p><strong>Family Size:</strong> {{ family_size }}</p>
+        <p><strong>Crop Type:</strong> {{ crop_type | title }}</p>
+        <p><strong>Season:</strong> {{ season | title }}</p>
+        <p><strong>Sunlight Direction:</strong> {{ sunlight_direction | title }}</p>
+        <p><strong>Lighting Mode:</strong> {{ lighting_mode | title }}</p>
+
+        <h2>Monthly Estimates</h2>
+        <ul>
+            <li><strong>Estimated Yield:</strong> {{ estimated_yield }} lbs/month</li>
+            <li><strong>Electricity Cost:</strong> ${{ electricity_total }}</li>
+            <li><strong>Nutrient Cost:</strong> ${{ nutrients_total }}</li>
+            <li><strong>Total Cost Per Pound:</strong> ${{ cost_per_pound }} <em>(based 		on estimated 6-month yield)</em></li>
+            <li><strong>Breakeven Timeline:</strong> {{ breakeven_month }} month(s)</li>
+        </ul>
+
+        <h2>Total System Cost</h2>
+        <h3>${{ estimated_cost }}</h3>
+
+        <h2>Store Price Comparisons</h2>
+        <ul>
+            <li>Safeway (avg): $4.00/lb</li>
+            <li>Whole Foods: $5.50/lb</li>
+            <li>Farmers Market: $3.75/lb</li>
+            <li>GrowHome Cost/lb: ${{ cost_per_pound }}</li>
+        </ul>
+
+        <form method="POST" action="/download-report">
+            <input type="hidden" name="trays" value="{{ trays }}">
+            <input type="hidden" name="light_cost" value="{{ light_cost }}">
+            <input type="hidden" name="pump_cost" value="{{ pump_cost }}">
+            <input type="hidden" name="sensor_cost" value="{{ sensor_cost }}">
+            <button type="submit">Download Report as CSV</button>
+        </form>
+    </section>
+</body>
+</html>
